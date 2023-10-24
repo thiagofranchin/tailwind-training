@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Logo } from "./components/Logo";
 import { Menu } from "./components/Menu";
+import { ContentCard } from "./components/ContentCard";
+import { Button } from "./components/core/Button";
 
 export default function Home() {
   return (
@@ -12,34 +14,39 @@ export default function Home() {
         </div>
       </header>
       <main className="">
-        <section className="content-card bg-slate-400">
-          <div className="container mx-auto flex flex-col-reverse px-4 py-14 md:flex-row md:px-0 md:py-20">
-            <div className="flex w-full flex-col justify-between py-10 md:w-[50%]">
-              <h2 className="text-6xl font-bold">Title</h2>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Similique aperiam numquam maiores quidem quisquam voluptates
-                dolorem qui quis, fugit rerum deserunt. Qui vitae illo quae,
-                veniam quo tempora temporibus cum.
-              </p>
-              <button className="w-[200px] rounded-md bg-red-500 p-2">
-                Link to
-              </button>
+        <ContentCard />
+
+        <section className="cards-row">
+          <div className="container mx-auto grid px-4 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:px-0 lg:py-20">
+            <div className="card mb-5 bg-slate-500 lg:mb-0">
+              <div className="card-header">
+                <Image
+                  src="/image-02.jpg"
+                  width={500}
+                  height={500}
+                  alt={"Ocean"}
+                  style={{ width: "100%" }}
+                />
+              </div>
+              <div className="card-body p-4">
+                <h3 className="mb-3 text-3xl font-semibold">Title</h3>
+                <p className="">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Inventore, quod? Magni nisi deleniti dicta! Magnam asperiores
+                  dolor beatae unde earum ratione velit saepe pariatur sed
+                  obcaecati iure nesciunt, itaque repudiandae.
+                </p>
+              </div>
+              <div className="card-footer p-4 pb-6">
+                <Button text="See more" />
+              </div>
             </div>
-            <div className="flex w-full justify-center md:w-[50%]">
-              <Image
-                src="/image-01.png"
-                width={500}
-                height={500}
-                alt={"Ocean"}
-                style={{ width: "100%" }}
-              />
-            </div>
+            <div className="card bg-blue-400">Card 2</div>
+            <div className="card bg-red-400">Card 3</div>
+            <div className="card bg-green-500">Card 4</div>
           </div>
         </section>
-
         <section className="hero">Hero</section>
-        <section className="cards-row">Cards Row</section>
       </main>
       <footer>
         <nav>Menu</nav>
