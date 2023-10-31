@@ -2,8 +2,7 @@ import Image from "next/image";
 import { Logo } from "./components/Logo";
 import { Menu } from "./components/Menu";
 import { ContentCard } from "./components/ContentCard";
-import { Button } from "./components/core/Button";
-import { CardRow } from "./components/CardRow";
+import { CardsRow } from "./components/CardsRow";
 
 export default function Home() {
   return (
@@ -15,8 +14,15 @@ export default function Home() {
         </div>
       </header>
       <main>
-        <ContentCard />
-        <CardRow
+        <ContentCard
+          eyebrow="eyebrow"
+          title="Title"
+          textBody="<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit distinctio iste aliquam dignissimos voluptas praesentium labore, laboriosam similique ullam quidem dolorum impedit tempora nisi porro autem. Nemo dolores minus corporis?</p>"
+          textButton="See more"
+          urlImage="/image-02.jpg"
+          bgImageSection="/image-04.jpg"
+        />
+        <CardsRow
           cards={[
             {
               title: "Title 01",

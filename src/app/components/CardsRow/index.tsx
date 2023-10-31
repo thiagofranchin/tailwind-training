@@ -1,13 +1,33 @@
 import Image from "next/image";
+
+import { Section } from "../core/Section";
 import { Button } from "../core/Button";
 
-interface CardRowProps {
+interface CardsRowProps {
+  bgColorSection?: string;
+  bgImageSection?: string;
+  bgOpacitySection?: number;
   cards: CardProps[];
+  classSection?: string;
+  zebra?: boolean;
 }
 
-export function CardRow({ cards }: CardRowProps) {
+export function CardsRow({
+  cards,
+  bgColorSection,
+  bgImageSection,
+  bgOpacitySection,
+  classSection,
+  zebra,
+}: CardsRowProps) {
   return (
-    <section className="cards-row">
+    <Section
+      classSection={`cards-row ${classSection ? classSection : ""}`}
+      zebra={zebra}
+      bgColor={bgColorSection}
+      bgImage={bgImageSection}
+      bgOpacity={bgOpacitySection}
+    >
       <div className="container mx-auto grid gap-5 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:px-0 lg:py-20">
         {cards.map((card, index) => (
           <Card
@@ -20,7 +40,7 @@ export function CardRow({ cards }: CardRowProps) {
           />
         ))}
       </div>
-    </section>
+    </Section>
   );
 }
 
@@ -32,9 +52,9 @@ interface CardProps {
   textButton?: string;
 }
 
-function Card({ title, text, urlImage, altImage = "", textButton }: CardProps) {
+function Card({ altImage = "", text, textButton, title, urlImage }: CardProps) {
   return (
-    <div className="card bg-slate-500 shadow-lg">
+    <div className="card flex flex-col shadow-md">
       {urlImage && (
         <div className="card-header">
           <Image
@@ -54,7 +74,7 @@ function Card({ title, text, urlImage, altImage = "", textButton }: CardProps) {
         </div>
       )}
       {textButton && (
-        <div className="card-footer p-4 pb-6">
+        <div className="card-footer mt-auto p-4 pb-6">
           <Button text={textButton} />
         </div>
       )}

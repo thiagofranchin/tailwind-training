@@ -1,31 +1,70 @@
+import { ReactNode } from "react";
 import Image from "next/image";
 
+import { Section } from "../core/Section";
 import { Button } from "../core/Button";
 
-export function ContentCard() {
+interface ContentCardProps {
+  altImage?: string;
+  bgColorSection?: string;
+  bgImageSection?: string;
+  bgOpacitySection?: number;
+  textBody: ReactNode;
+  classSection?: string;
+  eyebrow?: string;
+  textButton?: string;
+  title?: string;
+  urlImage?: string;
+  zebra?: boolean;
+}
+
+export function ContentCard({
+  altImage = "",
+  bgColorSection,
+  bgImageSection,
+  bgOpacitySection,
+  textBody,
+  classSection,
+  eyebrow,
+  textButton,
+  title,
+  urlImage,
+  zebra,
+}: ContentCardProps) {
   return (
-    <section className="content-card bg-slate-400">
+    <Section
+      classSection={`content-card ${classSection ? classSection : ""}`}
+      zebra={zebra}
+      bgColor={bgColorSection}
+      bgImage={bgImageSection}
+      bgOpacity={bgOpacitySection}
+    >
       <div className="container mx-auto flex flex-col-reverse px-4 py-14 md:flex-row md:px-0 md:py-20">
         <div className="flex w-full flex-col justify-center gap-4 py-10 md:w-[50%] md:pr-3">
-          <h2 className="text-6xl font-bold">Title</h2>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique
-            aperiam numquam maiores quidem quisquam voluptates dolorem qui quis,
-            fugit rerum deserunt. Qui vitae illo quae, veniam quo tempora
-            temporibus cum.
-          </p>
-          <Button text="See more" />
+          {eyebrow && (
+            <small className="text-base font-semibold">{eyebrow}</small>
+          )}
+          {title && <h2 className="text-6xl font-bold">{title}</h2>}
+          {textBody && (
+            <div dangerouslySetInnerHTML={{ __html: textBody }}></div>
+          )}
+          {textButton && <Button text={textButton} />}
         </div>
-        <div className="flex w-full justify-center md:w-[50%]">
-          <Image
-            src="/image-01.png"
-            width={500}
-            height={500}
-            alt={"Ocean"}
-            style={{ width: "100%" }}
-          />
+        <div className="flex w-full items-center justify-center md:w-[50%]">
+          {urlImage && (
+            <Image
+              src={urlImage}
+              width={500}
+              height={500}
+              alt={altImage}
+              style={{
+                width: "100%",
+                height: "max-content",
+              }}
+            />
+          )}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
