@@ -3,6 +3,7 @@ import { Logo } from "./components/Logo";
 import { Menu } from "./components/Menu";
 import { ContentCard } from "./components/ContentCard";
 import { CardsRow } from "./components/CardsRow";
+import { Hero } from "./components/Hero";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
               urlImage: "/image-02.jpg",
               altImage: "Radio",
               textButton: "See more",
+              urlLinkButton: "#",
             },
             {
               text: "Texto do Card 01",
@@ -57,7 +59,18 @@ export default function Home() {
             },
           ]}
         />
-        <section className="hero">Hero</section>
+        <Hero
+          buttons={[
+            {
+              textButton: "Button-01 with text very long with 2 line",
+              urlButton: "https://www.google.com",
+            },
+            {
+              textButton: "Button-02",
+              urlButton: "https://www.github.com",
+            },
+          ]}
+        />
       </main>
       <footer>
         <nav>Menu</nav>

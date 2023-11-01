@@ -1,11 +1,15 @@
 interface ButtonProps {
-  text: string;
+  text?: string;
+  urlButton?: string;
 }
 
-export function Button({ text }: ButtonProps) {
+export function Button({ text, urlButton }: ButtonProps) {
   return (
-    <button className="w-[200px] rounded-md bg-red-500 p-2 text-white hover:bg-red-600">
+    <a
+      className="flex items-center justify-center rounded-md bg-red-500 p-2 text-center text-white hover:bg-red-600 sm:max-w-[150px] md:max-w-[200px]"
+      href={urlButton}
+    >
       {text}
-    </button>
+    </a>
   );
 }

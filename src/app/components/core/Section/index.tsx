@@ -28,7 +28,9 @@ export function Section({
 
   return (
     <section
-      className={`${classSection} ${zebra ? "bg-gray-100" : "bg-white"}`}
+      className={`px-4 py-14 lg:py-20 ${classSection} ${
+        zebra ? "bg-gray-100" : "bg-white"
+      }`}
       {...(Object.keys(bgSectionStyles).length > 0
         ? { style: bgSectionStyles }
         : {})}

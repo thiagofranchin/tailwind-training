@@ -28,7 +28,7 @@ export function CardsRow({
       bgImage={bgImageSection}
       bgOpacity={bgOpacitySection}
     >
-      <div className="container mx-auto grid gap-5 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:px-0 lg:py-20">
+      <div className="container mx-auto grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((card, index) => (
           <Card
             key={index}
@@ -37,6 +37,7 @@ export function CardsRow({
             urlImage={card.urlImage}
             altImage={card.altImage}
             textButton={card.textButton}
+            urlLinkButton={card.urlLinkButton}
           />
         ))}
       </div>
@@ -50,9 +51,17 @@ interface CardProps {
   urlImage?: string;
   altImage?: string;
   textButton?: string;
+  urlLinkButton?: string;
 }
 
-function Card({ altImage = "", text, textButton, title, urlImage }: CardProps) {
+function Card({
+  altImage = "",
+  text,
+  textButton,
+  title,
+  urlImage,
+  urlLinkButton,
+}: CardProps) {
   return (
     <div className="card flex flex-col shadow-md">
       {urlImage && (
@@ -75,7 +84,7 @@ function Card({ altImage = "", text, textButton, title, urlImage }: CardProps) {
       )}
       {textButton && (
         <div className="card-footer mt-auto p-4 pb-6">
-          <Button text={textButton} />
+          <Button text={textButton} urlButton={urlLinkButton} />
         </div>
       )}
     </div>

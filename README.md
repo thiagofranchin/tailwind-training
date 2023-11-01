@@ -6,6 +6,7 @@
 - Menu
 - Content Card
 - Card Row (Card)
+- Hero
 
 ## Core Components
 
